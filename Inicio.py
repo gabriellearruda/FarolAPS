@@ -12,7 +12,7 @@ municipio = st.selectbox('', competencias_notas['Município'].unique())
 competencias_unicas_aderidas = f"{competencias_notas[(competencias_notas['Município'] == municipio) & (competencias_notas['Pactuado?'] == 'Sim')]['Competência'].nunique():,}"
 iniciativas_unicas_aderidas = f"{len(iniciativas[(iniciativas['Município'] == municipio) & (iniciativas['Status Geral'] == '3 - Concluída')]):,}"
 competencias_notas = competencias_notas[(competencias_notas['Município'] == municipio)]
-competencias_notas = competencias_notas[['Município', 'Competência', 'Baseline Competência Nota', 'Baseline Competência Classificação']]
+competencias_notas = competencias_notas[['Município', 'Temática', 'Baseline Temática Nota', 'Baseline Temática Classificação']]
 st.write("""
      """)
 text = "Seu municipio aderiu a " + competencias_unicas_aderidas + " competências e já realizou " + iniciativas_unicas_aderidas + " iniciativas para melhora-las."
@@ -20,16 +20,16 @@ st.markdown(text)
 st.markdown("""
 
     ## Diagnóstico""")
-competencias_notas = competencias_notas.drop_duplicates(subset=['Município', 'Competência', 'Baseline Competência Nota'])
+competencias_notas = competencias_notas.drop_duplicates(subset=['Município', 'Temática', 'Baseline Temática Nota'])
 for i in competencias_notas.index.tolist():
-    str = competencias_notas.loc[i]['Competência'] + ' - ' + competencias_notas.loc[i]['Baseline Competência Classificação'][4:]
-    if competencias_notas.loc[i]['Baseline Competência Classificação'][0:1] == '1':
+    str = competencias_notas.loc[i]['Temática'] + ' - ' + competencias_notas.loc[i]['Baseline Temática Classificação'][4:]
+    if competencias_notas.loc[i]['Baseline Temática Classificação'][0:1] == '1':
         st.error(str)
-    if competencias_notas.loc[i]['Baseline Competência Classificação'][0:1] == '2':
+    if competencias_notas.loc[i]['Baseline Temática Classificação'][0:1] == '2':
         st.warning(str)
-    if competencias_notas.loc[i]['Baseline Competência Classificação'][0:1] == '3':
+    if competencias_notas.loc[i]['Baseline Temática Classificação'][0:1] == '3':
         st.success(str)
-    if competencias_notas.loc[i]['Baseline Competência Classificação'][0:1] == '4':
+    if competencias_notas.loc[i]['Baseline Temática Classificação'][0:1] == '4':
         st.info(str)
 
 
