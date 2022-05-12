@@ -5,7 +5,7 @@ import pandas as pd
 
 
 st.markdown("""
-    ### Selecione seu municipio""")
+    ### Sel seu municipio""")
 competencias_notas = pd.read_csv("competencias_notas.csv")
 iniciativas = pd.read_csv('https://docs.google.com/spreadsheets/d/' + '196uk3iKUF5g1bsjsinwsZ5RY91-7zGk_llSakfGApls' + '/export?gid=253431840&format=csv', index_col=0)
 municipio = st.selectbox('', competencias_notas['Município'].unique())
