@@ -5,7 +5,7 @@ import pandas as pd
 
 
 st.markdown("""
-    ### Selecione seu municipio""")
+    ### Selecione  """)
 competencias_notas = pd.read_csv("competencias_notas.csv")
 iniciativas = pd.read_csv('https://docs.google.com/spreadsheets/d/' + '196uk3iKUF5g1bsjsinwsZ5RY91-7zGk_llSakfGApls' + '/export?gid=253431840&format=csv', index_col=0)
 municipio = st.selectbox('', competencias_notas['Município'].unique())
@@ -19,7 +19,7 @@ text = "Seu municipio aderiu a " + competencias_unicas_aderidas + " competência
 st.markdown(text)
 st.markdown("""
 
-    ## Diagnóstico""")
+    ## """)
 competencias_notas = competencias_notas.drop_duplicates(subset=['Município', 'Temática', 'Baseline Temática Nota'])
 for i in competencias_notas.index.tolist():
     str = competencias_notas.loc[i]['Temática'] + ' - ' + competencias_notas.loc[i]['Baseline Temática Classificação'][4:]
